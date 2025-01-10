@@ -1,0 +1,333 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+.header .logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+.nav {
+    display: flex;
+    gap: 20px;
+}
+.nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+.nav a:hover {
+    color: #fc5775;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+    padding-right: 40px;
+}
+.icon-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 30px;
+}
+.icon-link:hover {
+    color: #fc5775;
+}
+
+.icons .logout-btn{
+    color: #060606;
+    text-decoration: none;
+    font-size: 0.9em;
+    padding: 5px 10px;
+}
+
+.hero {
+    background-image: url('Bini.webp');
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    padding: 200px 20px;
+    margin-top: 80px;
+}
+.hero h1 {
+    font-size: 60px;
+    margin-bottom: 30px;
+    color: #fff;
+}
+.hero-content{
+    padding-left: 55px;
+}
+.hero .btn {
+    padding: 15px 20px;
+    color: black;
+    text-decoration: none;
+    border:#060606;
+    border-radius: 5px;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 200px;
+    background-color: white;
+    align-items: center;
+}
+.hero .btn:hover {
+    color: white;
+    background-color: #000000;
+}
+
+.prod1-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align items at the top */
+    gap: 50px; /* Adjust gap between image and details */
+    max-width: 1000px;
+    margin: 100px auto; /* Adjust margin-top to push it further down */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* Image Section Styling */
+.image-section {
+    flex: 1; /* Image section takes remaining space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-section img {
+    max-width: 100%;
+    width: 400px; /* Restrict image size */
+    height: auto;
+    border-radius: 5px;
+    margin: 0px; /* Remove margin for proper alignment */
+}
+
+/* Product Details Section */
+.details-section {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px; /* Limit the size of the details */
+    flex: 1; /* Take remaining space */
+    margin-left: 0px;
+    padding: 0 20px;
+}
+
+.details-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 20px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.description {
+    font-size: 14px;
+    color: #555;
+    margin: 15px 0;
+}
+
+.size-option {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.size-option:hover {
+    background-color: #ddd;
+}
+
+.size-option.active {
+    background-color: #000000;
+    color: white;
+    border-color: #000000;
+}
+.add-to-cart {
+    margin-top: 20px;
+}
+
+.add-to-cart button {
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.add-to-cart button:hover {
+    background: #444;
+}
+
+.wishlist {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #888;
+    cursor: pointer;
+}
+
+.wishlist:hover {
+    text-decoration: underline;
+}
+
+/* Center Cart UI */
+#cart-container {
+    width: 400px;
+    margin: 50px auto; /* Center it with some margin from the top */
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: none;  /* Initially hidden, will be shown when 'Add to Cart' is clicked */
+}
+
+#cart-container h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+#cart-items {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#cart-items li {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cart-items .btn {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+#cart-items .btn:hover {
+    background-color: #e53935;
+}
+
+#cart-total {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#checkout-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+
+
+#checkout-form {
+    display: block;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+#checkout-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#checkout-form button {
+    background-color: #ffffff;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+
+
+
+.footer {
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 16px;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .hero {
+        padding: 150px 20px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero .btn {
+        font-size: 20px;
+        padding: 20px 40px;
+    }
+
+    .new-arrivals h2 {
+        font-size: 28px;
+    }
+
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .product img {
+        max-width: 95%;
+    }
+}
+

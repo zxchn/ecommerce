@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHN | Merch -Shop</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">CHN  | Merch</div>
+        <nav class="nav">
+            <a href="homepage.html">Home</a>
+            <a href="product.html">Shop</a>
+            <a href="contacts.html">Contact Us</a>
+            
+        </nav>
+
+        <div class="icons">
+            <!-- User icon links to login.html -->
+            <a href="login.html" class="icon-link">
+                <i class="fa-solid fa-user"></i>
+            </a>
+            
+            <!-- Cart icon links to cart.html -->
+            <a href="#" class="icon-link">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+        </div>
+    </header>
+<!---Main Page-->
+<section class="new-arrivals">
+    <h2>Featured Product</h2>
+     <!-- Search Bar and Price Filter -->
+     <div class="filter-container">
+        <input type="text" id="search-input" placeholder="Search for a shirt..." oninput="filterProducts()">
+        <label for="price-filter">Price range: </label>
+        <select id="price-filter" onchange="filterProducts()">
+            <option value="all">All Prices</option>
+            <option value="0-50">$0 - $50</option>
+            <option value="50-100">$50 - $100</option>
+            <option value="100-200">$100 - $200</option>
+            <option value="200-300">$200 - $300</option>
+            <option value="300+">$300+</option>
+        </select>
+    </div>
+
+    <div class="products">
+        <a href="product1.html" class="product">
+            <img src="product1.webp" alt="Product Image">
+            <p>Dress Code Striped Regular Fit Cardigan</p>
+            <span>$59.99</span>
+        </a>
+        <a href="product2.html" class="product">
+            <img src="product2.webp" alt="Product Image">
+            <p>Regular Fit Short Sleeves Shirt with Polka Dots All Over Print</p>
+            <span>$89.99</span>
+        </a>
+        <a href="product3.html" class="product">
+            <img src="product3.webp" alt="Product Image">
+            <p>Relaxed Fit Polo with Tipping</p>
+            <span>$25.99</span>
+        </a>
+        <a href="product4.html" class="product">
+            <img src="product4.webp" alt="Product Image">
+            <p>Regular Fit T-Shirt with All Over Print Pocket</p>
+            <span>$32.99</span>
+        </a>
+        <a href="product5.html" class="product">
+            <img src="product5.webp" alt="Product Image">
+            <p>Sorry I'm Not Interested Regular Fit T-shirt</p>
+            <span>$29.99</span>
+        </a>
+        <a href="product6.html" class="product">
+            <img src="product6.webp" alt="Product Image">
+            <p>Relaxed Fit Flat Knit Top</p>
+            <span>$20.99</span>
+        </a>
+        <a href="product7.html" class="product">
+            <img src="product7.webp" alt="Product Image">
+            <p>Relaxed Fit Waffle Polo</p>
+            <span>$29.99</span>
+        </a>
+        <a href="product8.html" class="product">
+            <img src="product8.webp" alt="Product Image">
+            <p>Berries Relaxed Fit All Over Printed T-Shirt</p>
+            <span>$45.99</span>
+        </a>
+        <a href="product9.html" class="product">
+            <img src="product9.webp" alt="Product Image">
+            <p>Slim Fit Staple Nylon Pants</p>
+            <span>$32.99</span>
+        </a>
+    </div>
+</section>
+
+    <footer class="footer">
+        <p>&copy; 2024 CHN | Merch. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        function filterProducts() {
+    const searchInput = document.getElementById('search-input').value.toLowerCase();
+    const priceFilter = document.getElementById('price-filter').value;
+    const products = document.querySelectorAll('.product');
+
+    products.forEach(product => {
+        const productName = product.querySelector('p').textContent.toLowerCase();
+        const productPrice = parseFloat(product.getAttribute('data-price'));
+
+        const matchesSearch = productName.includes(searchInput);
+
+        let matchesPrice = false;
+        if (priceFilter === 'all') {
+            matchesPrice = true;
+        } else if (priceFilter === '0-50' && productPrice >= 0 && productPrice <= 50) {
+            matchesPrice = true;
+        } else if (priceFilter === '50-100' && productPrice > 50 && productPrice <= 100) {
+            matchesPrice = true;
+        } else if (priceFilter === '100-200' && productPrice > 100 && productPrice <= 200) {
+            matchesPrice = true;
+        } else if (priceFilter === '200-300' && productPrice > 200 && productPrice <= 300) {
+            matchesPrice = true;
+        } else if (priceFilter === '300+' && productPrice > 300) {
+            matchesPrice = true;
+        }
+
+        if (matchesSearch && matchesPrice) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
+    </script>
+</body>
+</html>

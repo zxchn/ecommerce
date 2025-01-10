@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHN | Merch</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">CHN Merch</div>
+        <nav class="nav">
+            <a href="homepage.html">Home</a>
+            <a href="product.html">Shop</a>
+            <a href="about.html">About</a>
+            
+        </nav>
+
+        <div class="icons">
+            <a href="#profile" class="icon-link">
+                <i class="fa-solid fa-user"></i>
+            </a>
+            <a href="#cart" class="icon-link">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+        </div>
+    </header>
+
+    <div class="login-wrapper">
+        <div class="login-container">
+            <h2>Login to Your Account</h2>
+            <form id="login-form" action="#" method="POST" onsubmit="return handleLogin(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Login</button>
+                </div>
+            </form>
+
+            <!-- Error Message -->
+            <div id="error-message" class="error-message" style="display: none;">
+                <p>Invalid username or password. Please try again.</p>
+            </div>
+
+            <p class="signup-link">Don't have an account? <a href="register.html">Register here</a></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 CHN | Merch. All rights reserved.</p>
+    </footer>
+
+    <!-- Script Section -->
+    <script>
+    function handleLogin(event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    console.log("Username entered:", username); // Debug
+    console.log("Password entered:", password); // Debug
+
+    const adminCredentials = { username: "admin", password: "admin123" };
+
+    if (username === adminCredentials.username && password === adminCredentials.password) {
+        console.log("Admin login successful"); // Debug
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('currentUser', 'admin');
+        window.location.href = 'admin.html';
+    } else {
+        console.log("Regular user login or invalid credentials"); // Debug
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('currentUser', username);
+        window.location.href = 'homepage.html';
+    }
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHN | Merch-ProductDetails</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style-productdetails.css">
+    <style>
+        /* Shopping Cart and Checkout Form Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        /* Cart Styling */
+        #cart {
+            width: 48%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+
+        #cart h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        #cart-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #cart-items li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            font-size: 16px;
+        }
+
+        #cart-items li button {
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        #cart-items li button:hover {
+            background-color: #ff1a1a;
+        }
+
+        #cart-total {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+            color: #333;
+        }
+
+        #checkout-btn {
+            background-color: #000000;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 5px 10px 10px 5px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100px;
+            margin-top: 20px;
+            text-align: center;
+            margin-left: 85%;
+        }
+
+        #checkout-btn:hover {
+            background-color: #ffffff;
+            color: black;
+        }
+
+        /* Checkout Form Styling */
+        #checkout-form {
+            display: none;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #e3f2fd;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 48%;
+        }
+
+        #checkout-form h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #checkout-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        #checkout-form label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        #checkout-form input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        #checkout-form input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        #checkout-form button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #checkout-form button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">CHN  | Merch</div>
+        <nav class="nav">
+            <a href="homepage.html">Home</a>
+            <a href="product.html">Shop</a>
+            <a href="contacts.html">Contact Us</a>
+        </nav>
+
+        <div class="icons">
+            <div id="user-info" class="user-info" style="display: none;">
+                <span id="greeting"></span>
+                <button id="logout-btn" class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+            <a href="login.html" id="login-link" class="icon-link">
+                <i class="fa-solid fa-user"></i>
+            </a>
+            <a href="cart.html" class="icon-link">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+        </div>
+    </header>
+    
+    <!-- Product Details Section -->
+    <div class="prod1-container">
+        <div class="image-section">
+            <img src="product5.webp" alt="Product Image">
+        </div>
+        <div class="details-section">
+            <h1>Sorry I'm Not Interested Regular Fit T-shirt</h1>
+            <div class="price">$29.99</div>
+            <div class="description">
+                A product short description is a concise and brief overview of a product, providing key information to potential customers. Typically, it highlights the most important features, benefits, and characteristics of the product.
+            </div>
+
+            <div class="size-options">
+                <span>Size:</span>
+                <button class="size-option active" onclick="selectSize(this)">Large</button>
+                <button class="size-option" onclick="selectSize(this)">Medium</button>
+                <button class="size-option" onclick="selectSize(this)">Small</button>
+            </div>
+
+            <div class="add-to-cart">
+                <button id="add-to-cart">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Section -->
+    <div class="container">
+        <div id="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items"></ul>
+            <p id="cart-total">Total: $0.00</p>
+            <button id="checkout-btn" class="btn">Proceed to Checkout</button>
+        </div>
+        <form id="checkout-form" style="display: none;">
+            <h2>Checkout</h2>
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Shipping Address:</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="card">Card Number:</label>
+                <input type="text" id="card" name="card" required>
+            </div>
+            <button type="submit" class="btn">Place Order</button>
+        </form>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 CHN | Merch. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const product = {
+            name: "Sorry I'm Not Interested Regular Fit T-shirt",
+            price: 29.99
+        };
+
+        let cart = [];
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${item.name} - $${item.price.toFixed(2)}
+                    <button class="btn" onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItems.appendChild(li);
+                total += item.price;
+            });
+
+            cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        function addToCart() {
+            cart.push(product);
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        document.getElementById('add-to-cart').addEventListener('click', addToCart);
+
+        document.getElementById('checkout-btn').addEventListener('click', function() {
+            document.getElementById('checkout-form').style.display = 'block';
+            this.style.display = 'none';
+        });
+
+        document.getElementById('checkout-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Order placed successfully!');
+            cart = [];
+            updateCart();
+            this.reset();
+            this.style.display = 'none';
+            document.getElementById('checkout-btn').style.display = 'inline-block';
+        });
+
+
+        function selectSize(button) {
+    // Remove 'active' class from all buttons
+    const sizeButtons = document.querySelectorAll('.size-option');
+    sizeButtons.forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    // Add 'active' class to the clicked button
+    button.classList.add('active');
+}
+    </script>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHN | Register</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">CHN Merch</div>
+        <nav class="nav">
+            <a href="homepage.html">Home</a>
+            <a href="product.html">Shop</a>
+            <a href="about.html">About</a>
+        </nav>
+        <div class="icons">
+            <a href="#profile" class="icon-link">
+                <i class="fa-solid fa-user"></i>
+            </a>
+            <a href="#cart" class="icon-link">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+        </div>
+    </header>
+    <div class="register-wrapper">
+        <div class="register-container">
+            <h2>Create an Account</h2>
+            <form id="register-form" action="#" method="POST" onsubmit="return handleRegister(event)">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Register</button>
+                </div>
+            </form>
+            <div id="success-message" class="success-message" style="display: none;">
+                <p>Registration successful! You can now <a href="login.html">login here</a>.</p>
+            </div>
+            <p class="login-link">Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 CHN | Merch. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
+    <script>
+        function handleRegister(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const user = { username, email, password };
+            localStorage.setItem('user', JSON.stringify(user));
+            document.getElementById('success-message').style.display = 'block';
+            alert("Registration successful!");
+        }
+    </script>
+</body>
+</html>
